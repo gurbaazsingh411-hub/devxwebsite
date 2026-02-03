@@ -21,7 +21,6 @@ const Index = () => {
         <EventsSection />
         <GalaxySection />
         <TeamSection />
-        <PartnersSection />
         <GallerySection />
         <ContactSection />
       </main>
