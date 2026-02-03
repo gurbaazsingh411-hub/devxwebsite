@@ -61,20 +61,7 @@ const services = [
   },
 ];
 
-const techStack = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Python",
-  "Flutter",
-  "React Native",
-  "TailwindCSS",
-  "PostgreSQL",
-  "MongoDB",
-  "Firebase",
-  "AWS",
-];
+
 
 const benefits = [
   {
@@ -127,14 +114,12 @@ export default function HireUs() {
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const projectsRef = useRef(null);
-  const techRef = useRef(null);
   const benefitsRef = useRef(null);
   const contactRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true });
   const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
   const projectsInView = useInView(projectsRef, { once: true, margin: "-100px" });
-  const techInView = useInView(techRef, { once: true, margin: "-100px" });
   const benefitsInView = useInView(benefitsRef, { once: true, margin: "-100px" });
   const contactInView = useInView(contactRef, { once: true, margin: "-100px" });
 
@@ -395,50 +380,7 @@ export default function HireUs() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
-      <section
-        ref={techRef}
-        className="py-24 md:py-32 relative bg-secondary/30"
-      >
-        <div className="absolute inset-0 cyber-grid opacity-50" />
 
-        <div className="section-container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={techInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-              Our <span className="text-gradient">Tech Stack</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              We work with modern, industry-standard technologies
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={techInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            {techStack.map((tech, index) => (
-              <motion.div
-                key={tech}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={techInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                className="glass-card rounded-lg px-6 py-3 hover-glow group cursor-default"
-              >
-                <span className="font-medium text-foreground group-hover:text-primary transition-colors">
-                  {tech}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Why Hire Us Section */}
       <section ref={benefitsRef} className="py-24 md:py-32 relative">
