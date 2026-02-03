@@ -62,7 +62,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="#contact">
+          <a href="https://tally.so/r/MeRVxY" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="xl">
               <Users className="w-5 h-5" />
               Join DevX GTBIT
@@ -74,7 +74,7 @@ export const HeroSection = () => {
               <ArrowRight className="w-5 h-5" />
             </Button>
           </a>
-          <a href="#contact">
+          <a href="https://tally.so/r/MeRVxY" target="_blank" rel="noopener noreferrer">
             <Button variant="heroSecondary" size="lg">
               Become a Contributor
             </Button>

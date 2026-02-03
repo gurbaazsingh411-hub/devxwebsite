@@ -73,7 +73,7 @@ export const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="/#contact">
+          <a href="https://tally.so/r/MeRVxY" target="_blank" rel="noopener noreferrer">
             <Button variant="heroOutline" size="sm">
               Join Us
             </Button>
@@ -120,7 +120,12 @@ export const Navbar = () => {
                   </a>
                 )
               )}
-              <a href="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <a
+                href="https://tally.so/r/MeRVxY"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 <Button variant="hero" className="w-full mt-4">
                   Join Us
                 </Button>

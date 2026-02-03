@@ -10,8 +10,8 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/devx_gtbit", label: "Instagram" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/devx_gtbit19/", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/devx-gtbit/", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Github, href: "#", label: "GitHub" },
 ];
@@ -81,12 +81,12 @@ export const Footer = () => {
               <li>GTBIT, Delhi</li>
               <li>
                 <a
-                  href="https://instagram.com/devx_gtbit"
+                  href="https://www.instagram.com/devx_gtbit19/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  @devx_gtbit
+                  @devx_gtbit19
                 </a>
               </li>
             </ul>

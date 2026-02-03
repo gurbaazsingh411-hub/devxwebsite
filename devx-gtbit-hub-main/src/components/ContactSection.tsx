@@ -83,12 +83,12 @@ export const ContactSection = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-1">Follow Us</h3>
                   <a
-                    href="https://instagram.com/devx_gtbit"
+                    href="https://www.instagram.com/devx_gtbit19/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline"
                   >
-                    @devx_gtbit
+                    @devx_gtbit19
                   </a>
                 </div>
               </div>
