@@ -1,12 +1,12 @@
 import { Instagram, Linkedin, Twitter, Github, ArrowUp } from "lucide-react";
 
 const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Events", href: "#events" },
-  { label: "Projects", href: "#projects" },
-  { label: "Team", href: "#team" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Events", href: "/#events" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Team", href: "/#team" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const socialLinks = [
@@ -27,7 +27,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 md:gap-12">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <a href="#home" className="flex items-center gap-2 mb-4">
+            <a href="/#home" className="flex items-center gap-2 mb-4">
               <span className="text-2xl font-display font-bold text-gradient">
                 DevX
               </span>

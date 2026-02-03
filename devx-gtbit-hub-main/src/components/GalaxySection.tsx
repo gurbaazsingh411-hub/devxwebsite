@@ -57,35 +57,38 @@ export const GalaxySection = () => {
   });
 
   return (
-    <section 
-      id="galaxy" 
+    <section
+      id="galaxy"
       className="py-24 md:py-32 relative bg-black/90 min-h-screen"
       ref={ref}
     >
       <div className="absolute inset-0 w-full h-full">
-        <Canvas camera={{ position: [0, 0, 15], fov: 75 }}>
+        <Canvas
+          camera={{ position: [0, 0, 15], fov: 75 }}
+          onPointerMissed={() => setSelectedProject(null)}
+        >
           <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={75} />
-          <OrbitControls 
-            enableZoom={true} 
-            enablePan={false} 
+          <OrbitControls
+            enableZoom={true}
+            enablePan={false}
             rotateSpeed={0.5}
             minDistance={8}
             maxDistance={20}
           />
-          
+
           {/* Ambient lighting */}
           <ambientLight intensity={0.2} />
           <pointLight position={[0, 0, 10]} intensity={1} color="#ffffff" />
-          
+
           {/* Central Core */}
           <CentralCore />
-          
+
           {/* Nebula Effect - Disabled for stability */}
           {/* <Nebula /> */}
-          
+
           {/* Star Field Background */}
           <StarField count={2000} />
-          
+
           {/* Project Nodes */}
           {featuredProjects.map((project, index) => (
             <ProjectNode
@@ -97,16 +100,16 @@ export const GalaxySection = () => {
               index={index}
             />
           ))}
-          
+
           {/* Connection Lines between projects */}
           <ConnectionLines positions={projectPositions} />
-          
+
           {/* Directional light for better illumination */}
           <directionalLight position={[10, 10, 5]} intensity={0.5} />
           <directionalLight position={[-10, -10, -5]} intensity={0.3} />
         </Canvas>
       </div>
-      
+
       {/* Content overlay */}
       <div className="section-container relative z-10">
         <motion.div
@@ -122,7 +125,7 @@ export const GalaxySection = () => {
             Explore our featured projects in an interactive 3D visualization
           </p>
         </motion.div>
-        
+
         {/* Project Info Panel */}
         {selectedProject !== null && (
           <motion.div
@@ -148,7 +151,7 @@ export const GalaxySection = () => {
             </div>
           </motion.div>
         )}
-        
+
         {/* Instructions */}
         <motion.div
           initial={{ opacity: 0 }}

@@ -11,8 +11,8 @@ export const HeroSection = () => {
     >
       {/* Falling Pattern Background */}
       <div className="absolute inset-0">
-        <FallingPattern 
-          color="hsl(var(--primary))" 
+        <FallingPattern
+          color="hsl(var(--primary))"
           backgroundColor="hsl(var(--background))"
           duration={120}
           blurIntensity="0.8em"
@@ -62,17 +62,23 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="hero" size="xl">
-            <Users className="w-5 h-5" />
-            Join DevX GTBIT
-          </Button>
-          <Button variant="heroOutline" size="xl">
-            Attend Next Event
-            <ArrowRight className="w-5 h-5" />
-          </Button>
-          <Button variant="heroSecondary" size="lg">
-            Become a Contributor
-          </Button>
+          <a href="#contact">
+            <Button variant="hero" size="xl">
+              <Users className="w-5 h-5" />
+              Join DevX GTBIT
+            </Button>
+          </a>
+          <a href="#events">
+            <Button variant="heroOutline" size="xl">
+              Attend Next Event
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+          </a>
+          <a href="#contact">
+            <Button variant="heroSecondary" size="lg">
+              Become a Contributor
+            </Button>
+          </a>
         </motion.div>
 
         {/* Stats Preview */}
