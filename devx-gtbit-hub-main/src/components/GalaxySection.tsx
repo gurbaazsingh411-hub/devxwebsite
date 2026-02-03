@@ -11,30 +11,21 @@ import { Project } from "@/lib/types";
 
 const featuredProjects: Project[] = [
   {
-    title: "Campus Connect",
-    problem: "Students struggle to find relevant events and communities on campus",
-    solution: "Built a unified platform connecting students with clubs, events, and opportunities",
-    impact: "500+ active users, 20+ clubs onboarded",
-    tags: ["React", "Node.js", "MongoDB"],
+    title: "VIMUN",
+    problem: "Managing high-stakes Model United Nations conferences at scale",
+    solution: "Developed a premium portal for real-time news, committee management, and registrations",
+    impact: "Successfully hosted 1000+ delegates across major conference circuits",
+    tags: ["React", "MUN", "TailwindCSS"],
     color: "#60a5fa", // blue
     featured: true,
   },
   {
-    title: "AI Study Buddy",
-    problem: "Personalized learning resources are hard to find",
-    solution: "AI-powered platform that recommends study materials based on learning style",
-    impact: "Improved study efficiency by 40% in pilot group",
-    tags: ["Python", "TensorFlow", "FastAPI"],
+    title: "Apertre 3.0",
+    problem: "Barriers for developers entering the open-source ecosystem",
+    solution: "Built a collaborative launch bay for open-source missions and community building",
+    impact: "Gathering 500+ builders for real-world code discovery and shipping",
+    tags: ["Open Source", "Community", "Hackathon"],
     color: "#34d399", // green
-    featured: true,
-  },
-  {
-    title: "Green Track",
-    problem: "Lack of awareness about personal carbon footprint",
-    solution: "Mobile app that tracks and gamifies sustainable lifestyle choices",
-    impact: "Winner at National Sustainability Hackathon",
-    tags: ["React Native", "Firebase", "ML"],
-    color: "#fbbf24", // yellow
     featured: true,
   },
 ];
