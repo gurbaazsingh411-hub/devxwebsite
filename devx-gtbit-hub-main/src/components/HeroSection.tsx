@@ -74,11 +74,7 @@ export const HeroSection = () => {
               <ArrowRight className="w-5 h-5" />
             </Button>
           </a>
-          <a href="https://tally.so/r/MeRVxY" target="_blank" rel="noopener noreferrer">
-            <Button variant="heroSecondary" size="lg">
-              Become a Contributor
-            </Button>
-          </a>
+
         </motion.div>
 
         {/* Stats Preview */}
@@ -90,7 +86,6 @@ export const HeroSection = () => {
         >
           {[
             { value: "6,000+", label: "Community Members" },
-            { value: "30+", label: "Events Hosted" },
             { value: "15+", label: "Projects Built" },
             { value: "5+", label: "Hackathon Wins" },
           ].map((stat, index) => (
