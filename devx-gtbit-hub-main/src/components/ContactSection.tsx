@@ -21,7 +21,10 @@ export const ContactSection = () => {
     const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
     const mailtoUrl = `mailto:devxgtbit@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    window.location.href = mailtoUrl;
+    // Create a temporary anchor element to trigger the mailto protocol more reliably across browsers
+    const link = document.createElement("a");
+    link.href = mailtoUrl;
+    link.click();
 
     toast({
       title: "Opening Mail Client...",
