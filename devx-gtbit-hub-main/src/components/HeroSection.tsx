@@ -74,7 +74,6 @@ export const HeroSection = () => {
               <ArrowRight className="w-5 h-5" />
             </Button>
           </a>
-
         </motion.div>
 
         {/* Stats Preview */}
@@ -82,7 +81,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+          className="mt-20 flex flex-wrap justify-center gap-6 md:gap-8"
         >
           {[
             { value: "6,000+", label: "Community Members" },
