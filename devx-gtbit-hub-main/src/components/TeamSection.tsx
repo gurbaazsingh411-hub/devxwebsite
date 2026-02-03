@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Linkedin, Twitter, Github } from "lucide-react";
 
 const team = [
   {
@@ -76,27 +75,6 @@ export const TeamSection = () => {
                   {member.description}
                 </p>
 
-                {/* Social Links */}
-                <div className="flex items-center justify-center gap-3">
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Twitter className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                  </a>
-                </div>
               </div>
             </motion.div>
           ))}

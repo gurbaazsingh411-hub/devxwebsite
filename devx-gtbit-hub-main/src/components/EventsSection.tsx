@@ -5,28 +5,29 @@ import { Button } from "@/components/ui/button";
 
 const events = [
   {
-    title: "AI Hackathon 2024",
-    date: "December 15, 2024",
-    location: "GTBIT Campus",
+    title: "Apertre",
+    date: "February 2025",
+    location: "Online / GTBIT",
     description:
-      "24-hour hackathon focused on building AI-powered solutions for real-world problems.",
+      "A massive open-source hackathon focused on building impactful solutions and contributing to the ecosystem.",
     type: "Hackathon",
+    link: "https://apertre.resourcio.in/",
   },
   {
-    title: "Web3 Workshop",
-    date: "December 20, 2024",
-    location: "Online",
+    title: "Vibe Coding Workshop",
+    date: "Coming Soon",
+    location: "GTBIT Campus",
     description:
-      "Hands-on workshop on blockchain development, smart contracts, and decentralized apps.",
+      "A unique workshop on the intersection of music, coding, and creative development. Learn to build with vibes.",
     type: "Workshop",
   },
   {
-    title: "Startup Pitch Night",
-    date: "January 5, 2025",
-    location: "GTBIT Auditorium",
+    title: "ML Model Training Workshop",
+    date: "Coming Soon",
+    location: "Main Lab",
     description:
-      "Present your startup ideas to mentors and investors. Win mentorship and funding opportunities.",
-    type: "Networking",
+      "Hands-on session on training and deploying your first machine learning model. Master the basics of AI.",
+    type: "Workshop",
   },
 ];
 
@@ -92,8 +93,13 @@ export const EventsSection = () => {
                   <Button
                     variant="ghost"
                     className="mt-4 w-full justify-between group/btn"
+                    onClick={() => {
+                      if (event.link) {
+                        window.open(event.link, "_blank", "noopener,noreferrer");
+                      }
+                    }}
                   >
-                    Register Now
+                    {event.link ? "Register Now" : "Register Soon"}
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </div>

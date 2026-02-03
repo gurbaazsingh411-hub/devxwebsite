@@ -58,7 +58,7 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-display font-semibold mb-1">Email Us</h3>
-                  <p className="text-muted-foreground">devx.gtbit@gmail.com</p>
+                  <p className="text-muted-foreground">devxgtbit@gmail.com</p>
                 </div>
               </div>
 
@@ -103,12 +103,11 @@ export const ContactSection = () => {
                 Connect with 6,000+ developers on Discord and WhatsApp
               </p>
               <div className="flex gap-3">
-                <Button variant="heroOutline" size="sm">
-                  Discord
-                </Button>
-                <Button variant="heroSecondary" size="sm">
-                  WhatsApp
-                </Button>
+                <a href="https://wa.me/919958555716" target="_blank" rel="noopener noreferrer">
+                  <Button variant="heroSecondary" size="sm">
+                    WhatsApp
+                  </Button>
+                </a>
               </div>
             </div>
           </motion.div>

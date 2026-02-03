@@ -12,8 +12,6 @@ const quickLinks = [
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/devx_gtbit19/", label: "Instagram" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/devx-gtbit/", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
 ];
 
 export const Footer = () => {
@@ -77,7 +75,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-display font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>devx.gtbit@gmail.com</li>
+              <li>devxgtbit@gmail.com</li>
               <li>GTBIT, Delhi</li>
               <li>
                 <a
