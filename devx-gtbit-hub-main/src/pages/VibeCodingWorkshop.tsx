@@ -1,140 +1,166 @@
 import { motion } from "framer-motion";
+import { useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Code2, Cpu, GraduationCap, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
-export default function VibeCodingWorkshop() {
-    const submissionLink = "https://docs.google.com/forms/d/e/1FAIpQLSdwIiYyjUB05Lc0_iQ5ty4LN_KkHX1FgKxBLtTg6nTjBLGJJw/viewform?usp=dialog";
-    const projectLink = "https://github.com/gurbaazsingh411/vibe-coding-demo"; // Placeholder or real link if provided
+// --- Three.js Floating Particles ---
+function FloatingParticles({ count = 200 }) {
+    const mesh = useRef<THREE.Points>(null!);
+
+    const particles = useMemo(() => {
+        const positions = new Float32Array(count * 3);
+        for (let i = 0; i < count; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 20;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+        }
+        return positions;
+    }, [count]);
+
+    useFrame((state) => {
+        if (mesh.current) {
+            mesh.current.rotation.y = state.clock.elapsedTime * 0.03;
+            mesh.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.02) * 0.1;
+        }
+    });
 
     return (
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <points ref={mesh}>
+            <bufferGeometry>
+                <bufferAttribute
+                    attach="attributes-position"
+                    count={count}
+                    array={particles}
+                    itemSize={3}
+                />
+            </bufferGeometry>
+            <pointsMaterial
+                size={0.04}
+                color="#a78bfa"
+                transparent
+                opacity={0.6}
+                sizeAttenuation
+            />
+        </points>
+    );
+}
+
+// --- Animated Text Line ---
+const FadeInLine = ({
+    children,
+    delay = 0,
+    className = "",
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+}) => (
+    <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay }}
+        className={className}
+    >
+        {children}
+    </motion.div>
+);
+
+// --- Page ---
+export default function VibeCodingWorkshop() {
+    const submissionLink =
+        "https://docs.google.com/forms/d/e/1FAIpQLSdwIiYyjUB05Lc0_iQ5ty4LN_KkHX1FgKxBLtTg6nTjBLGJJw/viewform?usp=dialog";
+
+    const learnings = [
+        "How to build modern frontends with React & Vite",
+        "How to connect and query a database",
+        "How to integrate your backend with the database",
+        "How to ship fast — building MVPs that matter",
+    ];
+
+    return (
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
             <Navbar />
 
-            <main className="pt-32 pb-24">
-                <div className="section-container">
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
-                    >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
-                            Vibe Coding <span className="text-gradient">Workshop</span>
+            {/* Three.js Background */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
+                    <ambientLight intensity={0.3} />
+                    <FloatingParticles />
+                </Canvas>
+            </div>
+
+            <main className="relative z-10 pt-40 pb-32">
+                <div className="max-w-3xl mx-auto px-6">
+
+                    {/* Title */}
+                    <FadeInLine className="mb-6">
+                        <h1 className="text-5xl md:text-7xl font-display font-bold tracking-tight">
+                            Vibe Coding
                         </h1>
-                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                            A deep dive into the world of vibe coding, modern developer tools, and building with speed and intuition.
+                    </FadeInLine>
+                    <FadeInLine delay={0.1} className="mb-20">
+                        <p className="text-lg text-muted-foreground">
+                            A workshop by DevX GTBIT
                         </p>
-                    </motion.div>
+                    </FadeInLine>
 
-                    {/* Info Section */}
-                    <div className="grid md:grid-cols-2 gap-12 items-start mb-24">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-8"
-                        >
-                            <div className="glass-card p-8 rounded-2xl hover-glow">
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                                    <Code2 className="w-6 h-6 text-primary" />
-                                </div>
-                                <h2 className="text-2xl font-display font-bold mb-4">What is Vibe Coding?</h2>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    Vibe coding is a modern approach to software development that prioritizes intuition, speed, and AI-assisted workflows. Instead of getting bogged down in boilerplate, we focus on the "vibe" or the soul of the project, letting powerful tools handle the heavy lifting while we focus on architecture and features.
+                    {/* What We Learned */}
+                    <FadeInLine delay={0.15} className="mb-10">
+                        <h2 className="text-sm uppercase tracking-[0.2em] text-primary font-medium">
+                            What we learned
+                        </h2>
+                    </FadeInLine>
+
+                    <div className="space-y-5 mb-32">
+                        {learnings.map((item, i) => (
+                            <FadeInLine key={i} delay={0.2 + i * 0.08}>
+                                <p className="text-xl md:text-2xl text-foreground/90 font-light leading-relaxed">
+                                    {item}
                                 </p>
-                            </div>
-
-                            <div className="glass-card p-8 rounded-2xl hover-glow">
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                                    <Cpu className="w-6 h-6 text-primary" />
-                                </div>
-                                <h2 className="text-2xl font-display font-bold mb-4">Tools of the Trade</h2>
-                                <ul className="space-y-3 text-muted-foreground">
-                                    <li className="flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        Cursor & Lovable (AI-first IDEs)
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        Vite & React (Fast Frontend Ecosystem)
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        Framer Motion (Premium Animations)
-                                    </li>
-                                    <li className="flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        Lucide React (Modern Iconography)
-                                    </li>
-                                </ul>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="space-y-8"
-                        >
-                            <div className="glass-card p-8 rounded-2xl hover-glow">
-                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                                    <Github className="w-6 h-6 text-primary" />
-                                </div>
-                                <h2 className="text-2xl font-display font-bold mb-4">Git & GitHub</h2>
-                                <p className="text-muted-foreground leading-relaxed mb-6">
-                                    In this workshop, we also covered the essentials of version control. We learned how to track changes, collaborate with others, and deploy our projects to the world using Git and GitHub.
-                                </p>
-                                <Button
-                                    variant="heroOutline"
-                                    className="w-full"
-                                    onClick={() => window.open(projectLink, "_blank")}
-                                >
-                                    View Workshop Project
-                                    <ExternalLink className="w-4 h-4" />
-                                </Button>
-                            </div>
-
-                            <div className="glass-card p-8 rounded-2xl border-primary/30 bg-primary/5">
-                                <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6">
-                                    <GraduationCap className="w-6 h-6 text-primary" />
-                                </div>
-                                <h2 className="text-2xl font-display font-bold mb-4">The Challenge</h2>
-                                <p className="text-muted-foreground leading-relaxed">
-                                    Now it's your turn! Take what you learned and build a personalized profile page using Vibe Coding principles. Make it fast, make it beautiful, and most importantly—make it yours.
-                                </p>
-                            </div>
-                        </motion.div>
+                            </FadeInLine>
+                        ))}
                     </div>
 
-                    {/* Submission Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center"
-                    >
-                        <div className="glass-card p-12 rounded-3xl border-primary shadow-[0_0_30px_rgba(var(--primary-rgb),0.1)]">
-                            <h2 className="text-3xl font-display font-bold mb-6">Ready to Submit?</h2>
-                            <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
-                                Once you've completed your challenge, submit the link to your repository or live project here. We can't wait to see what you've built!
-                            </p>
-                            <Button
-                                variant="hero"
-                                size="xl"
-                                className="px-12"
-                                onClick={() => window.open(submissionLink, "_blank")}
-                            >
-                                Submit Your Entry
-                                <Send className="w-5 h-5 ml-2" />
-                            </Button>
-                        </div>
-                    </motion.div>
+                    {/* Divider */}
+                    <FadeInLine className="mb-32">
+                        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                    </FadeInLine>
+
+                    {/* Challenge */}
+                    <FadeInLine className="mb-6">
+                        <h2 className="text-sm uppercase tracking-[0.2em] text-primary font-medium">
+                            The Challenge
+                        </h2>
+                    </FadeInLine>
+                    <FadeInLine delay={0.1} className="mb-4">
+                        <p className="text-xl md:text-2xl text-foreground/90 font-light leading-relaxed">
+                            Build something. Ship it. Make it yours.
+                        </p>
+                    </FadeInLine>
+                    <FadeInLine delay={0.15} className="mb-16">
+                        <p className="text-muted-foreground">
+                            Take what you learned and create a project using vibe coding
+                            principles. The only rule — it has to be real.
+                        </p>
+                    </FadeInLine>
+
+                    {/* Submit */}
+                    <FadeInLine delay={0.2}>
+                        <Button
+                            variant="hero"
+                            size="xl"
+                            className="px-10"
+                            onClick={() => window.open(submissionLink, "_blank")}
+                        >
+                            Submit Your Entry
+                            <Send className="w-5 h-5 ml-2" />
+                        </Button>
+                    </FadeInLine>
                 </div>
             </main>
 
