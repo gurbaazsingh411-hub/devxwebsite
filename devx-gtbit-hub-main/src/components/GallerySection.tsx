@@ -2,8 +2,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
 const galleryImages = [
-  { id: 1, alt: "DevX Workshop", category: "Workshop" },
-  { id: 2, alt: "Hackathon Event", category: "Hackathon" },
+  { id: 1, alt: "IIIT Delhi Event", category: "Event", src: "/events/iiit-delhi.jpg" },
+  { id: 2, alt: "Wins at DTU", category: "Hackathon", src: "/events/wins-at-dtu.jpg" },
   { id: 3, alt: "Team Meetup", category: "Meetup" },
   { id: 4, alt: "Coding Session", category: "Session" },
   { id: 5, alt: "Award Ceremony", category: "Event" },
@@ -43,25 +43,34 @@ export const GallerySection = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Placeholder gradient background */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 ${
-                  index % 3 === 0
-                    ? "from-primary/30 to-cyan-500/20"
-                    : index % 3 === 1
-                    ? "from-cyan-500/30 to-primary/20"
-                    : "from-primary/20 to-cyan-600/30"
-                }`}
-              />
-
-              {/* Grid pattern overlay */}
-              <div className="absolute inset-0 cyber-grid opacity-30" />
+              {/* Photo or placeholder */}
+              {image.src ? (
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              ) : (
+                <>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 ${index % 3 === 0
+                        ? "from-primary/30 to-cyan-500/20"
+                        : index % 3 === 1
+                          ? "from-cyan-500/30 to-primary/20"
+                          : "from-primary/20 to-cyan-600/30"
+                      }`}
+                  />
+                  <div className="absolute inset-0 cyber-grid opacity-30" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-muted-foreground text-sm font-medium tracking-wide">Coming Soon</span>
+                  </div>
+                </>
+              )}
 
               {/* Hover overlay */}
               <div
-                className={`absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
               >
                 <div className="text-center p-4">
                   <p className="text-primary text-sm font-medium mb-1">
@@ -75,9 +84,8 @@ export const GallerySection = () => {
 
               {/* Glow effect */}
               <div
-                className={`absolute inset-0 shadow-[inset_0_0_40px_hsl(185_98%_46%/0.3)] rounded-xl transition-opacity duration-300 ${
-                  hoveredIndex === index ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute inset-0 shadow-[inset_0_0_40px_hsl(185_98%_46%/0.3)] rounded-xl transition-opacity duration-300 ${hoveredIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
               />
             </motion.div>
           ))}
