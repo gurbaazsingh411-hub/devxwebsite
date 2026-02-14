@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { motion, useInView } from "framer-motion";
 import { ProjectNode } from "@/3d/galaxy/ProjectNode";
@@ -9,15 +11,17 @@ import { Nebula } from "@/3d/galaxy/Nebula";
 import { StarField } from "@/3d/galaxy/StarField";
 import { Project } from "@/lib/types";
 
-const featuredProjects: Project[] = [
+const featuredProjects: (Project & { link: string; image?: string })[] = [
   {
     title: "VIMUN",
     problem: "Managing high-stakes Model United Nations conferences at scale",
     solution: "Developed a premium portal for real-time news, committee management, and registrations",
     impact: "Successfully hosted 1000+ delegates across major conference circuits",
     tags: ["React", "MUN", "TailwindCSS"],
-    color: "#60a5fa", // blue
+    color: "#60a5fa",
     featured: true,
+    link: "https://vimun.netlify.app/",
+    image: "/events/iiit-delhi.jpg",
   },
   {
     title: "Apertre 3.0",
@@ -25,8 +29,10 @@ const featuredProjects: Project[] = [
     solution: "Built a collaborative launch bay for open-source missions and community building",
     impact: "Gathering 500+ builders for real-world code discovery and shipping",
     tags: ["Open Source", "Community", "Hackathon"],
-    color: "#34d399", // green
+    color: "#34d399",
     featured: true,
+    link: "https://apertre.resourcio.in/",
+    image: "/events/wins-at-dtu.jpg",
   },
 ];
 
@@ -110,10 +116,10 @@ export const GalaxySection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-            Featured <span className="text-gradient">Projects</span> Galaxy
+            <span className="text-gradient">Event</span> Galaxy
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Explore our featured projects in an interactive 3D visualization
+            Explore our events in an interactive 3D visualization
           </p>
         </motion.div>
 
@@ -122,36 +128,54 @@ export const GalaxySection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-card rounded-2xl p-6 max-w-2xl mx-auto"
+            className="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto"
           >
-            <h3 className="text-2xl font-display font-bold mb-2 text-primary">
-              {featuredProjects[selectedProject].title}
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              {featuredProjects[selectedProject].solution}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {featuredProjects[selectedProject].tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-sm rounded-md bg-muted text-muted-foreground"
+            {/* Event Image */}
+            {featuredProjects[selectedProject].image ? (
+              <div className="relative aspect-video overflow-hidden">
+                <img
+                  src={featuredProjects[selectedProject].image}
+                  alt={featuredProjects[selectedProject].title}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            ) : (
+              <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                <span className="text-muted-foreground text-lg font-medium">Coming Soon</span>
+              </div>
+            )}
+
+            <div className="p-6">
+              <h3 className="text-2xl font-display font-bold mb-2 text-primary">
+                {featuredProjects[selectedProject].title}
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                {featuredProjects[selectedProject].solution}
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                {featuredProjects[selectedProject].tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-sm rounded-md bg-muted text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+                <Button
+                  variant="hero"
+                  size="sm"
+                  className="ml-auto"
+                  onClick={() => window.open(featuredProjects[selectedProject!].link, "_blank")}
                 >
-                  {tag}
-                </span>
-              ))}
+                  View
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
 
-        {/* Instructions */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.3 }}
-          className="mt-8 text-center text-muted-foreground"
-        >
-          <p>Click on a project node to learn more • Drag to rotate the view • Scroll to zoom</p>
-        </motion.div>
+
       </div>
     </section>
   );

@@ -13,20 +13,26 @@ const events = [
       "A massive open-source hackathon focused on building impactful solutions and contributing to the ecosystem.",
     type: "Hackathon",
     link: "https://apertre.resourcio.in/",
+    image: "/events/wins-at-dtu.jpg",
   },
   {
+    title: "Vibe Coding Workshop",
+    date: "February 2025",
+    location: "GTBIT Campus",
     description:
       "A unique workshop on the intersection of music, coding, and creative development. Learn to build with vibes.",
     type: "Workshop",
     internalLink: "/vibe-coding",
+    image: "/events/iiit-delhi.jpg",
   },
   {
-    title: "ML Model Training Workshop",
+    title: "Geospatial Technology Workshop",
     date: "Coming Soon",
-    location: "Main Lab",
+    location: "GTBIT Campus",
     description:
-      "Hands-on session on training and deploying your first machine learning model. Master the basics of AI.",
+      "In collaboration with MMGEIS — explore GIS, spatial thinking, and real-world applications in urban planning, disaster management & more. No prior experience needed.",
     type: "Workshop",
+    link: "https://docs.google.com/forms/d/e/1FAIpQLSeCamJFOSg39SaiTWhtDk5o74mptfvBZdmVzPSNoMLyzM7qQQ/viewform?usp=dialog",
   },
 ];
 
@@ -62,8 +68,23 @@ export const EventsSection = () => {
               className="group"
             >
               <div className="glass-card rounded-2xl overflow-hidden hover-glow h-full flex flex-col">
+                {/* Event Image */}
+                {event.image ? (
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative aspect-[16/9] bg-gradient-to-br from-primary/10 to-secondary/20 flex items-center justify-center">
+                    <span className="text-muted-foreground text-sm font-medium tracking-wide">Coming Soon</span>
+                  </div>
+                )}
+
                 {/* Event Type Badge */}
-                <div className="px-6 pt-6">
+                <div className="px-6 pt-4">
                   <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                     {event.type}
                   </span>
