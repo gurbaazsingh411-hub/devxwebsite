@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import HireUs from "./pages/HireUs";
 import VibeCodingWorkshop from "./pages/VibeCodingWorkshop";
+import GeospatialWorkshop from "./pages/GeospatialWorkshop";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/hire-us" element={<HireUs />} />
           <Route path="/vibe-coding" element={<VibeCodingWorkshop />} />
+          <Route path="/geospatial-workshop" element={<GeospatialWorkshop />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

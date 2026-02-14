@@ -30,7 +30,7 @@ const events = [
     description:
       "In collaboration with MMGEIS — explore GIS, spatial thinking, and real-world applications in urban planning, disaster management & more. No prior experience needed.",
     type: "Workshop",
-    link: "https://docs.google.com/forms/d/e/1FAIpQLSeCamJFOSg39SaiTWhtDk5o74mptfvBZdmVzPSNoMLyzM7qQQ/viewform?usp=dialog",
+    internalLink: "/geospatial-workshop",
   },
 ];
 
