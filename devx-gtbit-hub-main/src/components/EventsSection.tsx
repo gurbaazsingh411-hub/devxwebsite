@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const events = [
   {
@@ -14,12 +15,10 @@ const events = [
     link: "https://apertre.resourcio.in/",
   },
   {
-    title: "Vibe Coding Workshop",
-    date: "Coming Soon",
-    location: "GTBIT Campus",
     description:
       "A unique workshop on the intersection of music, coding, and creative development. Learn to build with vibes.",
     type: "Workshop",
+    internalLink: "/vibe-coding",
   },
   {
     title: "ML Model Training Workshop",
@@ -34,6 +33,7 @@ const events = [
 export const EventsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <section id="events" className="py-24 md:py-32 relative" ref={ref}>
@@ -94,12 +94,14 @@ export const EventsSection = () => {
                     variant="ghost"
                     className="mt-4 w-full justify-between group/btn"
                     onClick={() => {
-                      if (event.link) {
+                      if (event.internalLink) {
+                        navigate(event.internalLink);
+                      } else if (event.link) {
                         window.open(event.link, "_blank", "noopener,noreferrer");
                       }
                     }}
                   >
-                    {event.link ? "Register Now" : "Register Soon"}
+                    {event.internalLink ? "View Highlights" : event.link ? "Register Now" : "Register Soon"}
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </div>
