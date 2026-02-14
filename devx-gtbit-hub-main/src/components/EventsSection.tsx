@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const events = [
   {
     title: "Apertre",
-    date: "February 2025",
+    date: "February 2026",
     location: "Online / GTBIT",
     description:
       "A massive open-source hackathon focused on building impactful solutions and contributing to the ecosystem.",
@@ -16,7 +16,7 @@ const events = [
   },
   {
     title: "Vibe Coding Workshop",
-    date: "February 2025",
+    date: "February 2026",
     location: "GTBIT Campus",
     description:
       "A unique workshop on the intersection of music, coding, and creative development. Learn to build with vibes.",
