@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { Send, Linkedin, Github } from "lucide-react";
 
 // --- Three.js Floating Particles ---
 function FloatingParticles({ count = 200 }) {
@@ -125,6 +125,40 @@ export default function VibeCodingWorkshop() {
                             </FadeInLine>
                         ))}
                     </div>
+
+                    {/* About Speaker */}
+                    <FadeInLine className="mb-10">
+                        <h2 className="text-sm uppercase tracking-[0.2em] text-primary font-medium">
+                            About the Speaker
+                        </h2>
+                    </FadeInLine>
+                    <FadeInLine delay={0.05} className="mb-3">
+                        <p className="text-2xl md:text-3xl text-foreground/90 font-semibold">
+                            Manav Kaushal
+                        </p>
+                    </FadeInLine>
+                    <FadeInLine delay={0.1} className="mb-8">
+                        <div className="flex items-center gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/maybmnv/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                <Linkedin className="w-5 h-5" />
+                                LinkedIn
+                            </a>
+                            <a
+                                href="https://github.com/maybemnv"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                            >
+                                <Github className="w-5 h-5" />
+                                GitHub
+                            </a>
+                        </div>
+                    </FadeInLine>
 
                     {/* Divider */}
                     <FadeInLine className="mb-32">
