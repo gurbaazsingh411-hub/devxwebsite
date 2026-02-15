@@ -128,49 +128,32 @@ export const GalaxySection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto"
+            className="glass-card rounded-2xl p-6 max-w-2xl mx-auto"
           >
-            {/* Event Image */}
-            {featuredProjects[selectedProject].image ? (
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={featuredProjects[selectedProject].image}
-                  alt={featuredProjects[selectedProject].title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            ) : (
-              <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <span className="text-muted-foreground text-lg font-medium">Coming Soon</span>
-              </div>
-            )}
-
-            <div className="p-6">
-              <h3 className="text-2xl font-display font-bold mb-2 text-primary">
-                {featuredProjects[selectedProject].title}
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                {featuredProjects[selectedProject].solution}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {featuredProjects[selectedProject].tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-sm rounded-md bg-muted text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-                <Button
-                  variant="hero"
-                  size="sm"
-                  className="ml-auto"
-                  onClick={() => window.open(featuredProjects[selectedProject!].link, "_blank")}
+            <h3 className="text-2xl font-display font-bold mb-2 text-primary">
+              {featuredProjects[selectedProject].title}
+            </h3>
+            <p className="text-muted-foreground mb-4">
+              {featuredProjects[selectedProject].solution}
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {featuredProjects[selectedProject].tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-sm rounded-md bg-muted text-muted-foreground"
                 >
-                  View
-                  <ExternalLink className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
+                  {tag}
+                </span>
+              ))}
+              <Button
+                variant="hero"
+                size="sm"
+                className="ml-auto"
+                onClick={() => window.open(featuredProjects[selectedProject!].link, "_blank")}
+              >
+                View
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </Button>
             </div>
           </motion.div>
         )}
