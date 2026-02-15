@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 const galleryImages = [
   { id: 1, alt: "IIIT Delhi Event", category: "Event", src: "/events/iiit-delhi.jpg" },
   { id: 2, alt: "Wins at DTU", category: "Hackathon", src: "/events/wins-at-dtu.jpg" },
-  { id: 3, alt: "Team Meetup", category: "Meetup" },
+  { id: 3, alt: "Orientation 2025", category: "Event", src: "/events/orientation.jpg" },
   { id: 4, alt: "Coding Session", category: "Session" },
   { id: 5, alt: "Award Ceremony", category: "Event" },
   { id: 6, alt: "Project Showcase", category: "Showcase" },
@@ -54,10 +54,10 @@ export const GallerySection = () => {
                 <>
                   <div
                     className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 ${index % 3 === 0
-                        ? "from-primary/30 to-cyan-500/20"
-                        : index % 3 === 1
-                          ? "from-cyan-500/30 to-primary/20"
-                          : "from-primary/20 to-cyan-600/30"
+                      ? "from-primary/30 to-cyan-500/20"
+                      : index % 3 === 1
+                        ? "from-cyan-500/30 to-primary/20"
+                        : "from-primary/20 to-cyan-600/30"
                       }`}
                   />
                   <div className="absolute inset-0 cyber-grid opacity-30" />
